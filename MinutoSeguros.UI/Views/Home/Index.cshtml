@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Feed Notícias";
+}
+<h2>Blog Minuto</h2>
+<div ng-controller="HomeController">
+      
+
+    <div class="Container" data-ng-cloak>
+        <div loading-status-message loading id="idDivLoading" class="loader">
+            <img src="Images/ajax-loader.gif" class="ajax-loader" />
+        </div> 
+        <h3>Palavras mais recorrentes no feed</h3>
+        <div data-ng-repeat="item in FeedInfo.PalavrasMaisRecorres">
+            {{item.Palavra}}: {{item.Recorrencia}}<br>
+        </div>        
+
+        <h3>Palavras recorrentes por notícia</h3>
+        <div data-ng-repeat="(titulo, feedKPI) in FeedInfo.AvaliacaoPorNoticia" class="" >
+            <b>{{titulo}}</b><br>
+            <div data-ng-repeat="item in feedKPI" >
+                {{item.Palavra}}: {{item.Recorrencia}}<br>
+            </div>                     
+        </div>
+        
+        <h3>Notícias</h3>
+        
+        <div  data-ng-repeat="noticia in FeedInfo.Noticias" ng-bind-html="noticia.Conteudo" >            
+        </div>  
+         
+
+</div>
+
+</div>
